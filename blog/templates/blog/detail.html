@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.98.0">
-    <title>Håkon O. Kristiansen</title>
+    <title>{{ blog.title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
 
@@ -95,7 +95,7 @@
         <div class="navbar-nav ml-auto">
             <a class="nav-link" aria-current="page" href="https://www.linkedin.com/in/h%C3%A5kon-o-kristiansen-16a1b3226/">LinkedIn</a>
             <a class="nav-link" href='{% static "Corriculum Vitae - Håkon O. Kristiansen.pdf" %}'>CV</a>
-            <a class="nav-link" href='{% url "allblogs" %}'>Blog</a>
+            <a class="nav-link active" href='{% url "allblogs" %}'>Blog</a>
         </div>
         </div>
     </div>
@@ -103,39 +103,16 @@
 </header>
 
 <main>
+  <div class="container">
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Hei, jeg er Håkon.</h1>
-        <p class="lead text-muted">Jeg studerer Bygg- og miljøteknikk på NTNU Trondheim, og spesialiserer meg innen konstruksjonsteknikk. På siden driver jeg med denne typen prosjekter.</p>
-        <p>
-          <a href="mailto:haakon@nordtromsbolig.no" class="btn btn-primary my-2">Kontakt meg</a>
-        </p>
-        <img src='{% static "IMG_1772_meg.JPG" %}' height=350/>
-      </div>
-    </div>
-  </section>
+      <h1 class="text-center pt-3">{{ blog.title }}</h1>
+      <img class="img-fluid" src="{{ blog.image.url }}"/>
+      <br/>
+      {{ blog.pub_date_pretty }}
+      <hr/>
+      <p>{{ blog.body }}</p>
 
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for job in jobs.all %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <img class="card-img-top" src="{{ job.image.url }}"/>
-
-            <div class="card-body">
-              <p class="card-text">{{ job.summary }}</p>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-    </div>
   </div>
-
 </main>
 
 <footer class="text-muted py-5">
